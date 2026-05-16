@@ -64,7 +64,7 @@ def checar_alertas():
         d = get_ondas(lat, lon)
         if d["altura"] >= ALERTA_MIN:
             send_msg(
-                f"🚨 <b>ALERTA</b> — {praia}\n"
+                f"🚨 ALERTA — {praia}\n"
                 f"Ondas de {d['altura']:.1f}m agora!\n"
                 f"Período: {d['periodo']:.0f}s"
             )
