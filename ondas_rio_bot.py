@@ -3,7 +3,9 @@ import requests, schedule, time
 from datetime import datetime
 
 BOT_TOKEN  = "8201425911:AAE6aedoTWkIT-2t4uWX_DBjADgdrjQK72s"
-CHAT_ID    = "6087428840"
+CHAT_ID    = CHAT_IDS = [
+    "6087428840",   # Alexandre
+]
 HORA_ENVIO = "07:00"
 ALERTA_MIN = 1.0
 
@@ -34,11 +36,12 @@ def get_ondas(lat, lon):
     }
 
 def send_msg(texto):
-    r = requests.post(
-        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
-        json={"chat_id": CHAT_ID, "text": texto}
-    )
-    print("Resposta Telegram:", r.json())
+    for chat_id in CHAT_IDS:
+        r = requests.post(
+            f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+            json={"chat_id": chat_id, "text": texto, "parse_mode": "HTML"}
+        )
+        print("Resposta Telegram:", r.json())
 def enviar_previsao():
     hoje = datetime.now().strftime("%d/%m/%Y")
     msg = f"🌊 <b>Previsão de Ondas — {hoje}</b>\n\n"
