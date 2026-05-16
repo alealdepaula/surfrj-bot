@@ -18,6 +18,10 @@ PRAIAS = {
   "Recreio":            (-23.0213, -43.4672),
   "Prainha":            (-23.0443, -43.5122),
   "Grumari":            (-23.0551, -43.5231),
+  "Itacoatiara":        (-22.9617, -43.0647),
+  "Saquarema":          (-22.9197, -42.5097),
+  "Praia do Futuro":    (-3.7275,  -38.4663),
+  "Taíba":              (-3.4833,  -39.0667),
 }
 
 def get_ondas(lat, lon):
