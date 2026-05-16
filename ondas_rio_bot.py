@@ -5,6 +5,7 @@ from datetime import datetime
 BOT_TOKEN  = "8201425911:AAE6aedoTWkIT-2t4uWX_DBjADgdrjQK72s"
 CHAT_ID    = CHAT_IDS = [
     "6087428840",   # Alexandre
+    "8660416814",   # Beatriz
 ]
 HORA_ENVIO = "07:00"
 ALERTA_MIN = 1.0
