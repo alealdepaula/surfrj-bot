@@ -39,22 +39,23 @@ def send_msg(texto):
     for chat_id in CHAT_IDS:
         r = requests.post(
             f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
-            json={"chat_id": chat_id, "text": texto, "parse_mode": "HTML"}
+            json={"chat_id": chat_id, "text": texto}
         )
         print("Resposta Telegram:", r.json())
 def enviar_previsao():
     hoje = datetime.now().strftime("%d/%m/%Y")
-    msg = f"🌊 <b>Previsão de Ondas — {hoje}</b>\n\n"
+    msg = f"🌊 Previsão de Ondas — {hoje}\n\n"
     for praia, (lat, lon) in PRAIAS.items():
         print(f"Buscando {praia}...")
         d = get_ondas(lat, lon)
         h = d["altura"]; p = d["periodo"]
         emoji = "🟢" if h >= 1.0 else ("🟡" if h >= 0.5 else "🔴")
-        msg += f"{emoji} <b>{praia}</b>: {h:.1f}m · {p:.0f}s\n"
+        msg += f"{emoji} {praia}: {h:.1f}m · {p:.0f}s\n"
         print(f"{praia}: {h:.1f}m OK")
     msg += "\n🟢 ≥1m  🟡 0.5-1m  🔴 <0.5m"
     print("Enviando mensagem...")
     send_msg(msg)
+    print("Enviado!")
     print("Enviado!")
 
 def checar_alertas():
